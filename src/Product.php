@@ -41,7 +41,7 @@ class Product
 
 
         //If avaiblable extract shipping text + shipping date(if present)
-        if(count($productAvailability) == 2){
+        if(count($productAvailability) === 2){
             
             $shippingInformtion = $productAvailability->eq(1)->text();
             $shippingDate =  ScrapeHelper::getDate($shippingInformtion);
@@ -50,8 +50,6 @@ class Product
             $shippingInformtion = null;
             $shippingDate = null;
         }
-
-        
 
         $colors = $htmlElement->filter("span[data-colour]")->extract(['data-colour']);
 
